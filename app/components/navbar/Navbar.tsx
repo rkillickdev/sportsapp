@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import UserNav from './UserNav';
 import { getUserId } from '@/app/lib/actions';
+import AddLocationButton from './AddLocationButton';
 
 const Navbar = async () => {
     const userId = await getUserId();
@@ -27,6 +28,9 @@ const Navbar = async () => {
                     </div>
 
                     <div className="flex items-center space-x-6">
+                        <AddLocationButton
+                            userId={userId}
+                        />
                         <UserNav
                             userId={userId}
                         />
