@@ -1,3 +1,5 @@
+import { axiosReq } from "./axiosDefaults";
+
 import { getAccessToken } from "../lib/actions";
 
 const apiService = {

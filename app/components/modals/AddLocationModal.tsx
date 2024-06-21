@@ -1,6 +1,8 @@
 'use client'
 
 import Image from 'next/image';
+import { axiosReq } from '@/app/services/axiosDefaults';
+import { getAccessToken } from '@/app/lib/actions';
 
 import { useState } from 'react';
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
@@ -26,6 +28,7 @@ const AddLocationModal = () => {
   const router = useRouter();
 
   const submitForm = async () => {
+    const token = await getAccessToken();
     console.log('submit form');
 
     if (
@@ -41,7 +44,15 @@ const AddLocationModal = () => {
         formData.append('summary', summary);
 
         try {
-          const data = await apiService.post('/api/location/locations/', formData);
+          const { data } = await  axiosReq.post(
+            '/api/location/locations/',
+            formData,
+            {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${token}`
+              }
+          })
           console.log('SUCCESS :-D');
           console.log(data)
 
