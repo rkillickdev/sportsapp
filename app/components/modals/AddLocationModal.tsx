@@ -15,12 +15,22 @@ import SelectCountry, { SelectCountryValue } from '../forms/SelectCountry';
 
 import apiService from '@/app/services/apiService';
 import { useRouter } from 'next/navigation';
+import SelectAddress from '../forms/SelectAddress';
 
 const AddLocationModal = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [errors, setErrors] = useState<string[]>([]);
-  const [country, setCountry] = useState('');
-  const [region, setRegion] = useState('');
+  // const [country, setCountry] = useState('');
+  // const [region, setRegion] = useState('');
+  const [address, setAddress] = useState({
+    streetAndNumber: "",
+    place: "",
+    region: "",
+    postcode: "",
+    country: "",
+    latitude: "",
+    longitude: "",
+  })
   const [name, setName] = useState('');
   const [summary, setSummary] = useState('');
 
@@ -32,14 +42,12 @@ const AddLocationModal = () => {
     console.log('submit form');
 
     if (
-      country &&
-      region &&
+      address &&
       name &&
       summary
     ) {
         const formData = new FormData();
-        formData.append('country', country);
-        formData.append('region', region);
+        formData.append('address', JSON.stringify(address));
         formData.append('name', name);
         formData.append('summary', summary);
 
@@ -92,7 +100,7 @@ const AddLocationModal = () => {
         <>
           <h2 className='mb-6 text-2xl'>Location</h2>
 
-          <CountryDropdown
+          {/* <CountryDropdown
             value={country}
             onChange={(val) => setCountry(val)}
             whitelist={['GB']}
@@ -101,6 +109,11 @@ const AddLocationModal = () => {
             country={country}
             value={region}
             onChange={(val) => setRegion(val)}
+          /> */}
+
+          <SelectAddress
+            address={address}
+            setAddress={setAddress}
           />
 
           <CustomButton

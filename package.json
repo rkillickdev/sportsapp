@@ -16,6 +16,7 @@
     "react-country-region-selector": "^3.6.1",
     "react-dom": "^18",
     "react-select": "^5.8.0",
+    "sass": "^1.77.6",
     "world-countries": "^5.0.0",
     "zustand": "^4.5.2"
   },
