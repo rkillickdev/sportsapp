@@ -8,6 +8,7 @@ import useSignupModal from "@/app/hooks/useSignupModal";
 import CustomButton from "../forms/CustomButton";
 import apiService from "@/app/services/apiService";
 import { handleLogin } from "@/app/lib/actions";
+import RegisterForm from "../Auth/RegisterForm/RegisterForm";
 
 const SignupModal = () => {
     //
@@ -49,7 +50,7 @@ const SignupModal = () => {
 
     const content = (
         <>
-            <form
+            {/* <form
                 action={submitSignup}
                 className="space-y-4"
             >
@@ -74,7 +75,8 @@ const SignupModal = () => {
                     label="Submit"
                     onClick={submitSignup}
                 />
-            </form>
+            </form> */}
+            <RegisterForm />
         </>
     )
 
