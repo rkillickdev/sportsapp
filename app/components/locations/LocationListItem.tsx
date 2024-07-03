@@ -9,11 +9,11 @@ interface LocationProps {
 const LocationListItem: React.FC<LocationProps> = ({
   location
 }) => {
-  const router = useRouter
+  const router = useRouter();
   return(
     <div
             className="cursor-pointer"
-            onClick={() => router.push(`/properties/${location.id}`)}
+            onClick={() => router.push(`/locations/${location.id}`)}
         >
             <div className="relative overflow-hidden aspect-square rounded-xl">
                 <Image
